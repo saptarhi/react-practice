@@ -1,58 +1,83 @@
 .form {
-  background-color: #3a3a3a;
-  color: #ffffff;
+  width: 320px;
   padding: 24px;
-  border-radius: 12px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  width: 320px;
+  background-color: #3a3a3a;
+  border-radius: 12px;
+  color: #fff;
 }
 
 label {
   display: flex;
   flex-direction: column;
+  position: relative;
   font-size: 11px;
   font-weight: 400;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.input-container {
   position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 10px 36px 10px 0;
+  background-color: #121212;
+  border: none;
+  border-bottom: 1px solid #555;
+  color: #fff;
+  outline: none;
+  transition: border-color 0.3s ease;
 }
 
 input[type="text"],
 input[type="email"],
 input[type="password"] {
+  padding: 10px;
   background-color: transparent;
   border: none;
   border-bottom: 1px solid #505351;
-  color: #ffffff;
-  padding: 10px;
+  color: #fff;
   border-radius: 0;
   outline: none;
   transition: border-color 0.3s ease;
 }
 
+input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  position: relative;
+  appearance: none;
+  background-color: #3a3a3a;
+  border: 1px solid #fff;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
 input:focus {
-  border-bottom-color: #ffffff;
+  border-bottom-color: #fff;
 }
 
 input.error {
   border-bottom-color: #ff4c4c;
 }
+
 input:-webkit-autofill {
   background-color: #3a3a3a;
   -webkit-box-shadow: 0 0 0 1000px #3a3a3a inset;
-  -webkit-text-fill-color: #ffffff;
+  -webkit-text-fill-color: #fff;
   transition: background-color 5000s ease-in-out 0s;
-}
-input[type="checkbox"] {
-  appearance: none;
-  width: 14px;
-  height: 14px;
-  border: 1px solid #fff;
-  background-color: #3a3a3a;
-  border-radius: 2px;
-  cursor: pointer;
-  position: relative;
-  transition: all 0.2s ease;
 }
 
 input[type="checkbox"]:checked {
@@ -66,8 +91,9 @@ input[type="checkbox"]:checked::after {
   color: #3a3a3a;
   font-size: 14px;
   top: -2px;
-  left: 2px;
+  left: 1px;
 }
+
 .error-text {
   color: #ff4c4c;
   font-size: 12px;
@@ -84,13 +110,13 @@ input[type="checkbox"]:checked::after {
 }
 
 .register-btn {
-  background-color: #00d957;
-  color: #ffffff;
-  border: none;
   padding: 10px;
+  border: none;
+  background-color: #00d957;
   border-radius: 6px;
-  cursor: pointer;
+  color: #fff;
   font-weight: 600;
+  cursor: pointer;
   transition: opacity 0.3s;
 }
 
@@ -98,10 +124,12 @@ input[type="checkbox"]:checked::after {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
 .text {
   font-size: 11px;
   font-weight: 400;
 }
+
 .eye-icon {
   position: absolute;
   right: 10px;
