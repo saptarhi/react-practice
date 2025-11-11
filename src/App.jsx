@@ -1,7 +1,6 @@
-import React from "react";
-import ControlledForm from "./components/ControlledForm";
-import UncontrolledForm from "./components/UncontrolledForm";
-import "./App.css";
+import ControlledForm from './components/ControlledForm';
+import UncontrolledForm from './components/UncontrolledForm';
+import './App.css';
 
 export default function App() {
   return (

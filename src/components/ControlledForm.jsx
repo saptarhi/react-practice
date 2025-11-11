@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import eyeClosed from "../assets/eyeClosed.svg";
-import eyeOpen from "../assets/eyeOpen.svg";
-import "./Form.css";
+import React, { useState } from 'react';
+import eyeClosed from '../assets/eyeClosed.svg';
+import eyeOpen from '../assets/eyeOpen.svg';
+import './Form.css';
 
 export default function ControlledForm() {
   const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
     agree: false,
   });
   const [showPassword, setShowPassword] = useState(false);
@@ -20,7 +20,7 @@ export default function ControlledForm() {
     const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: type === 'checkbox' ? checked : value,
     });
   };
 
@@ -28,22 +28,22 @@ export default function ControlledForm() {
     const newErrors = {};
 
     if (!/^[a-zA-Z0-9]+$/.test(formData.username)) {
-      newErrors.username = "Alphabets and number only";
-    } else if (formData.username === "irina") {
-      newErrors.username = "An account using this username already exists.";
+      newErrors.username = 'Alphabets and number only';
+    } else if (formData.username === 'irina') {
+      newErrors.username = 'An account using this username already exists.';
     }
 
     if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
-    } else if (formData.email === "inglik85@gmail.com") {
-      newErrors.email = "An account using this email address already exists";
+      newErrors.email = 'Please enter a valid email address';
+    } else if (formData.email === 'test@example.com') {
+      newErrors.email = 'An account using this email address already exists';
     }
 
     if (formData.password.length < 8)
-      newErrors.password = "Password must contain at least 8 symbols";
+      newErrors.password = 'Password must contain at least 8 symbols';
     if (formData.password !== formData.confirmPassword)
-      newErrors.confirmPassword = "Passwords do not match.";
-    if (!formData.agree) newErrors.agree = "You must agree to the terms.";
+      newErrors.confirmPassword = 'Passwords do not match.';
+    if (!formData.agree) newErrors.agree = 'You must agree to the terms.';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -53,14 +53,14 @@ export default function ControlledForm() {
     e.preventDefault();
     if (validate()) {
       console.log(formData);
-      alert("Registered!");
+      alert('Registered!');
       setErrors({});
 
       setFormData({
-        username: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
+        username: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
         agree: false,
       });
     }
@@ -75,7 +75,7 @@ export default function ControlledForm() {
           name="username"
           value={formData.username}
           onChange={handleChange}
-          className={errors.username ? "error" : ""}
+          className={errors.username ? 'error' : ''}
           placeholder="Enter your username"
         />
         {errors.username && <p className="error-text">{errors.username}</p>}
@@ -88,7 +88,7 @@ export default function ControlledForm() {
           name="email"
           value={formData.email}
           onChange={handleChange}
-          className={errors.email ? "error" : ""}
+          className={errors.email ? 'error' : ''}
           placeholder="Enter your email"
         />
         {errors.email && <p className="error-text">{errors.email}</p>}
@@ -98,13 +98,11 @@ export default function ControlledForm() {
         Password*
         <div className="input-container">
           <input
-            type={showPassword ? "text" : "password"}
+            type={showPassword ? 'text' : 'password'}
             name="password"
             value={formData.password}
-            onChange={(e) =>
-              setFormData({ ...formData, password: e.target.value })
-            }
-            className={errors.password ? "error" : ""}
+            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+            className={errors.password ? 'error' : ''}
             placeholder="Enter password"
           />
           <img
@@ -122,13 +120,11 @@ export default function ControlledForm() {
         Confirm Password*
         <div className="input-container">
           <input
-            type={showConfirm ? "text" : "password"}
+            type={showConfirm ? 'text' : 'password'}
             name="confirmPassword"
             value={formData.confirmPassword}
-            onChange={(e) =>
-              setFormData({ ...formData, confirmPassword: e.target.value })
-            }
-            className={errors.confirmPassword ? "error" : ""}
+            onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+            className={errors.confirmPassword ? 'error' : ''}
             placeholder="Confirm password"
           />
           <img
@@ -139,19 +135,12 @@ export default function ControlledForm() {
             onClick={() => setShowConfirm(!showConfirm)}
           />
         </div>
-        {errors.confirmPassword && (
-          <p className="error-text">{errors.confirmPassword}</p>
-        )}
+        {errors.confirmPassword && <p className="error-text">{errors.confirmPassword}</p>}
       </label>
 
       <label className="checkbox-label">
-        <input
-          type="checkbox"
-          name="agree"
-          checked={formData.agree}
-          onChange={handleChange}
-        />
-        I agree to the terms and conditions.
+        <input type="checkbox" name="agree" checked={formData.agree} onChange={handleChange} />I
+        agree to the terms and conditions.
       </label>
       {errors.agree && <p className="error-text">{errors.agree}</p>}
 
