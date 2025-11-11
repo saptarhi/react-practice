@@ -130,7 +130,7 @@ export default function ControlledForm() {
           <img
             src={showConfirm ? eyeOpen : eyeClosed}
             alt="Toggle visibility"
-            title="Togle visibility"
+            title="Toggle visibility"
             className="eye-icon"
             onClick={() => setShowConfirm(!showConfirm)}
           />
