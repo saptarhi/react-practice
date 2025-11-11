@@ -31,7 +31,7 @@ export default function UncontrolledForm() {
     }
     if (!/\S+@\S+\.\S+/.test(email)) {
       newErrors.email = "Please enter a valid email address";
-    } else if (email === "inglik85@gmail.com") {
+    } else if (email === "test@example.com") {
       newErrors.email = "An account using this email address alredy exists";
     }
 
@@ -60,11 +60,7 @@ export default function UncontrolledForm() {
     <form onSubmit={handleSubmit} className="form">
       <label>
         Username*
-        <input
-          ref={usernameRef}
-          type="text"
-          placeholder="Enter your username"
-        />
+        <input ref={usernameRef} type="text" placeholder="Enter your username" />
         {errors.username && <p className="error-text">{errors.username}</p>}
       </label>
 
@@ -109,14 +105,11 @@ export default function UncontrolledForm() {
             onClick={() => setShowConfirm(!showConfirm)}
           />
         </div>
-        {errors.confirmPassword && (
-          <p className="error-text">{errors.confirmPassword}</p>
-        )}
+        {errors.confirmPassword && <p className="error-text">{errors.confirmPassword}</p>}
       </label>
 
       <label className="checkbox-label">
-        <input ref={agreeRef} type="checkbox" />I agree to the terms and
-        conditions.
+        <input ref={agreeRef} type="checkbox" />I agree to the terms and conditions.
       </label>
       {errors.agree && <p className="error-text">{errors.agree}</p>}
 
