@@ -1,35 +1,35 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import eyeClosed from "../assets/eyeClosed.svg";
-import eyeOpen from "../assets/eyeOpen.svg";
-import "./Form.css";
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import eyeClosed from '../assets/eyeClosed.svg';
+import eyeOpen from '../assets/eyeOpen.svg';
+import './Form.css';
 
 const schema = z
   .object({
     username: z
       .string()
-      .min(1, "Username is required")
-      .regex(/^[a-zA-Z0-9]+$/, "Alphabets and number only")
-      .refine((val) => val !== "irina", {
-        message: "An account using this username already exists.",
+      .min(1, 'Username is required')
+      .regex(/^[a-zA-Z0-9]+$/, 'Alphabets and number only')
+      .refine((val) => val !== 'irina', {
+        message: 'An account using this username already exists.',
       }),
     email: z
       .string()
-      .email("Please enter a valid email address")
-      .refine((val) => val !== "inglik85@gmail.com", {
-        message: "An account using this email address already exists",
+      .email('Please enter a valid email address')
+      .refine((val) => val !== 'test@exemple.com', {
+        message: 'An account using this email address already exists',
       }),
-    password: z.string().min(8, "Password must contain at least 8 symbols"),
-    confirmPassword: z.string().min(8, "Confirm your password"),
+    password: z.string().min(8, 'Password must contain at least 8 symbols'),
+    confirmPassword: z.string().min(8, 'Confirm your password'),
     agree: z.boolean().refine((val) => val === true, {
-      message: "You must agree to the terms.",
+      message: 'You must agree to the terms.',
     }),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    path: ["confirmPassword"],
-    message: "Passwords do not match.",
+    path: ['confirmPassword'],
+    message: 'Passwords do not match.',
   });
 
 export default function FormRHF() {
@@ -43,12 +43,12 @@ export default function FormRHF() {
     reset,
   } = useForm({
     resolver: zodResolver(schema),
-    mode: "onChange",
+    mode: 'onChange',
   });
 
   const onSubmit = (data) => {
     console.log(data);
-    alert("Registered!");
+    alert('Registered!');
     reset();
   };
 
@@ -58,21 +58,19 @@ export default function FormRHF() {
         Username*
         <input
           type="text"
-          {...register("username")}
-          className={errors.username ? "error" : ""}
+          {...register('username')}
+          className={errors.username ? 'error' : ''}
           placeholder="Enter your username"
         />
-        {errors.username && (
-          <p className="error-text">{errors.username.message}</p>
-        )}
+        {errors.username && <p className="error-text">{errors.username.message}</p>}
       </label>
 
       <label>
         Email*
         <input
           type="email"
-          {...register("email")}
-          className={errors.email ? "error" : ""}
+          {...register('email')}
+          className={errors.email ? 'error' : ''}
           placeholder="Enter your email"
         />
         {errors.email && <p className="error-text">{errors.email.message}</p>}
@@ -82,9 +80,9 @@ export default function FormRHF() {
         Password*
         <div className="input-container">
           <input
-            type={showPassword ? "text" : "password"}
-            {...register("password")}
-            className={errors.password ? "error" : ""}
+            type={showPassword ? 'text' : 'password'}
+            {...register('password')}
+            className={errors.password ? 'error' : ''}
             placeholder="Enter password"
           />
           <img
@@ -95,18 +93,16 @@ export default function FormRHF() {
             onClick={() => setShowPassword(!showPassword)}
           />
         </div>
-        {errors.password && (
-          <p className="error-text">{errors.password.message}</p>
-        )}
+        {errors.password && <p className="error-text">{errors.password.message}</p>}
       </label>
 
       <label className="input-wrapper">
         Confirm Password*
         <div className="input-container">
           <input
-            type={showConfirm ? "text" : "password"}
-            {...register("confirmPassword")}
-            className={errors.confirmPassword ? "error" : ""}
+            type={showConfirm ? 'text' : 'password'}
+            {...register('confirmPassword')}
+            className={errors.confirmPassword ? 'error' : ''}
             placeholder="Confirm password"
           />
           <img
@@ -117,14 +113,11 @@ export default function FormRHF() {
             onClick={() => setShowConfirm(!showConfirm)}
           />
         </div>
-        {errors.confirmPassword && (
-          <p className="error-text">{errors.confirmPassword.message}</p>
-        )}
+        {errors.confirmPassword && <p className="error-text">{errors.confirmPassword.message}</p>}
       </label>
 
       <label className="checkbox-label">
-        <input type="checkbox" {...register("agree")} />I agree to the terms and
-        conditions.
+        <input type="checkbox" {...register('agree')} />I agree to the terms and conditions.
       </label>
       {errors.agree && <p className="error-text">{errors.agree.message}</p>}
 
